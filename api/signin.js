@@ -1,7 +1,7 @@
 const mongoInterface = require('../mongoInterface');
 
 module.exports = (request, response) => {
-  console.log(request.params.email);
+  console.log(request.body.email);
 
   var user = new User({
     name: request.body.name,

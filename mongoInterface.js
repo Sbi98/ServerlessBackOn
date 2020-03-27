@@ -53,12 +53,13 @@ var connection = null;
 
 if (connection == null) {
   console.log("creating a new connection");
-  mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, socketTimeoutMS: 10000, keepAlive: true, reconnectTries: 10000});
-  mongoose.connection.on("error", () => {
-    console.log("> error occurred from the database");
-  });
-  mongoose.connection.on("open", () => {
-    console.log("> successfully opened the database");
+  mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, socketTimeoutMS: 10000, keepAlive: true, reconnectTries: 10000})
+  .then(() => {
+    console.log('Successfully connected to BackOn MongoDB Atlas v2!');
+  })
+  .catch((error) => {
+    console.log('Unable to connect to BackOn MongoDB Atlas v2!');
+    console.error(error);
   });
 } else {
   console.log("using an existing connection");

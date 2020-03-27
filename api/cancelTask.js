@@ -1,7 +1,7 @@
 const mongoInterface = require('../mongoInterface');
 
 module.exports = (request, response) => {
-  mongoInterface.Task.findByIdAndUpdate(request.param("_id"), { '$set': { helperID : null } }).then(
+  mongoInterface.Task.findByIdAndUpdate(request.body._id, { '$set': { helperID : null } }).then(
     () => {
       response.send(200);
     }

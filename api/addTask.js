@@ -2,7 +2,7 @@ const mongoInterface = require('../mongoInterface');
 const ObjectId = require('mongodb').ObjectID;
 
 module.exports = (request, response) => {
-  mongoInterface.Task.findByIdAndUpdate(request.param("_id"), { '$set': { helperID : ObjectId(request.param("helperID"))} }).then(
+  mongoInterface.Task.findByIdAndUpdate(request.body._id, { '$set': { helperID : ObjectId(request.body.helperID)} }).then(
     () => {
       response.send(200);
     }
