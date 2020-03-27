@@ -51,6 +51,7 @@ userSchema.plugin(uniqueValidator);
 var connection = null
 
 if (connection == null) {
+  console.log("creating a new connection");
   connection = mongoose.createConnection(uri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
   connection.on("error", () => {
     console.log("> error occurred from the database");
@@ -58,6 +59,8 @@ if (connection == null) {
   connection.on("open", () => {
     console.log("> successfully opened the database");
   });
+} else {
+  console.log("using an existing connection");
 }
 
 var userModel = connection.model('User', userSchema);
