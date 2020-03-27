@@ -52,19 +52,19 @@ var connection = null
 
 if (connection == null) {
   console.log("creating a new connection");
-  connection = mongoose.createConnection(uri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
-  connection.on("error", () => {
+  mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
+  mongoose.connection.on("error", () => {
     console.log("> error occurred from the database");
   });
-  connection.on("open", () => {
+  mongoose.connection.on("open", () => {
     console.log("> successfully opened the database");
   });
 } else {
   console.log("using an existing connection");
 }
 
-var userModel = connection.model('User', userSchema);
-var taskModel = connection.model('Task', taskSchema);
+var userModel = mongoose.model('User', userSchema);
+var taskModel = mongoose.model('Task', taskSchema);
 
 exports.User = userModel;
 exports.Task = taskModel;
