@@ -50,6 +50,7 @@ userSchema.plugin(uniqueValidator);
 
 var connection = null;
 
+
 if (connection == null) {
   console.log("creating a new connection");
   mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, socketTimeoutMS: 10000, keepAlive: true, reconnectTries: 10000});
