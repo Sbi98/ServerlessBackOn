@@ -50,11 +50,9 @@ userSchema.plugin(uniqueValidator);
 
 var connection = null;
 
-mongoose.connect(uri);
-
-/*if (connection == null) {
+if (connection == null) {
   console.log("creating a new connection");
-  mongoose.connect(uri, {useNewUrlParser: true});
+  mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, socketTimeoutMS: 10000, keepAlive: true, reconnectTries: 10000});
   mongoose.connection.on("error", () => {
     console.log("> error occurred from the database");
   });
@@ -63,7 +61,7 @@ mongoose.connect(uri);
   });
 } else {
   console.log("using an existing connection");
-}*/
+}
 
 var userModel = mongoose.model('User', userSchema);
 var taskModel = mongoose.model('Task', taskSchema);
