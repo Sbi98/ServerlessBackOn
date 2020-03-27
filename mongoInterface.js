@@ -50,7 +50,7 @@ userSchema.plugin(uniqueValidator);
 
 var connection = null;
 
-mongoose.connect(uri, {useNewUrlParser: true});
+mongoose.connect(uri);
 
 /*if (connection == null) {
   console.log("creating a new connection");
