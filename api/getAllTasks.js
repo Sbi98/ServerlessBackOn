@@ -10,11 +10,11 @@ module.exports = (request, response) => {
       }
       }]).then(
       (tasks) => {
-        res.status(200).json(tasks);
+        response.status(200).json(tasks);
       }
     ).catch(
       (error) => {
-        res.status(400).json({
+        response.status(400).json({
           error: error
         });
       }
