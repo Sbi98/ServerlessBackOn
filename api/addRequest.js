@@ -1,5 +1,5 @@
 const mongoInterface = require('../mongoInterface');
-const ObjectId = require('mongodb').ObjectID;
+const ObjectId = require('mongodb').ObjectId;
 
 module.exports = (request, response) => {
   const task = new mongoInterface.Task({

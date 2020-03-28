@@ -1,5 +1,5 @@
 const mongoInterface = require('../mongoInterface');
-const ObjectId = require('mongodb').ObjectID;
+const ObjectId = require('mongodb').ObjectId;
 
 module.exports = (request, response) => {
   mongoInterface.Task.deleteOne({_id: ObjectId(request.body._id)}).then(

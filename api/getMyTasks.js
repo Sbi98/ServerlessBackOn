@@ -11,10 +11,12 @@ module.exports = (request, response) => {
         }
       },
       {
-        $match: {
-            helperID: null, neederID: {$ne : request.body._id}
-        }
+          $match: {
+              helperID: request.body.helperID
+          }
       }
+    
+    
     ]).then(
       (tasks) => {
         response.status(200).json(tasks);

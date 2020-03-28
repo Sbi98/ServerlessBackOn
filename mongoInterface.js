@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const uri = 'mongodb+srv://root:root@backon-nm2n7.mongodb.net/test?retryWrites=true&w=majority';
 const uniqueValidator = require('mongoose-unique-validator');
 const Double = require('@mongoosejs/double');
-const ObjectId = require('mongodb').ObjectID;
+const ObjectId = require('mongodb').ObjectId;
 
 mongoose.connection.on('connected', () => {
   console.log('Connection Established')
