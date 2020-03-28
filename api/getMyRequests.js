@@ -5,7 +5,7 @@ module.exports = (request, response) => {
     {
       $lookup: {
         from: "users",
-        localField: "neederID",
+        localField: "helperID",
         foreignField: "_id",
         as: "user"
       }

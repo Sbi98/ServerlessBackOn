@@ -5,15 +5,15 @@ module.exports = (request, response) => {
     {
       $lookup: {
           from: "users", // collection name in db
-          localField: "helperID",
+          localField: "neederID",
           foreignField: "_id",
           as: "user"
       }
     },
     {
-        $match: {
-            helperID: request.body.helperID
-        }
+      $match: {
+          helperID: request.body.helperID
+      }
     }
   ])
   .then(
