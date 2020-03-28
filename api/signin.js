@@ -1,7 +1,7 @@
 const mongoInterface = require('../mongoInterface');
 
 module.exports = (request, response) => {
-  var user = new User({
+  var user = new mongoInterface.User({
     name: request.body.name,
     surname: request.body.surname,
     email: request.body.email,
@@ -19,7 +19,7 @@ module.exports = (request, response) => {
           console.log("Registering "+user);
           mongoInterface.User.save()
           .then(result => {
-            console.log("signup\n"+result);
+            console.log("Registered \n"+result);
             response.status(200).json({
               _id: result._id
             });
