@@ -31,6 +31,22 @@ const uniqueValidator = require('mongoose-unique-validator');
 const Double = require('@mongoosejs/double');
 const ObjectId = require('mongodb').ObjectID;
 
+mongoose.connection.on('connected', () => {
+  console.log('Connection Established')
+})
+mongoose.connection.on('reconnected', () => {
+  console.log('Connection Reestablished')
+})
+mongoose.connection.on('disconnected', () => {
+  console.log('Connection Disconnected')
+})
+mongoose.connection.on('close', () => {
+  console.log('Connection Closed')
+})
+mongoose.connection.on('error', (error) => {
+  console.log('ERROR: ' + error)
+})
+
 const taskSchema = mongoose.Schema({
   title: { type: String, required: true },  
   description: { type: String, required: false},
@@ -48,25 +64,19 @@ const userSchema = mongoose.Schema({
 });
 userSchema.plugin(uniqueValidator);
 
-var connection = null;
+var connected = false;
 
-
-if (connection == null) {
+if (connected == false) {
   console.log("creating a new connection");
-  mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, socketTimeoutMS: 10000, keepAlive: true, reconnectTries: 10000})
-  .then(() => {
-    console.log('Successfully connected to BackOn MongoDB Atlas v2!');
-  })
-  .catch((error) => {
-    console.log('Unable to connect to BackOn MongoDB Atlas v2!');
-    console.error(error);
-  });
+  mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, socketTimeoutMS: 30000, keepAlive: true})
+  connected = true;
 } else {
   console.log("using an existing connection");
+  console.log(mongoose.connection.host);
 }
+
 
 var userModel = mongoose.model('User', userSchema);
 var taskModel = mongoose.model('Task', taskSchema);
-
 exports.User = userModel;
 exports.Task = taskModel;
