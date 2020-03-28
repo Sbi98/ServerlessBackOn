@@ -5,27 +5,27 @@ module.exports = (request, response) => {
     {
       $lookup: {
         from: "users",
-        localField: "helperID",
+        localField: "neederID",
         foreignField: "_id",
         as: "user"
       }
     },
     {
       $match: {
-          neederID: request.body.neederID
+        neederID: request.body.neederID
       }
     }
-    ])
-    .then(
+  ])
+  .then(
     (tasks) => {
       response.status(200).json(tasks);
     }
-    )
-    .catch(
-      (error) => {
-        response.status(400).json({
-          error: error
-        });
-      }
-    );
+  )
+  .catch(
+    (error) => {
+      response.status(400).json({
+        error: error
+      });
+    }
+  );
 };
