@@ -1,30 +1,3 @@
-/*const mongoose = require('mongoose');
-
-let cachedDb = null;
-
-function connectToDatabase() {
-  if (cachedDb != null) {
-    console.log('Using cached database instance');
-    return;
-  }
-  // If no connection is cached, create a new one
-  const db = mongoose.connect('mongodb+srv://root:root@backon-nm2n7.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true})
-  .then(() => {
-    console.log('Successfully connected to BackOn MongoDB Atlas v2!');
-  })
-  .catch((error) => {
-    console.log('Unable to connect to BackOn MongoDB Atlas v2!');
-    console.error(error);
-  });
-  // Cache the database connection and return the connection
-  cachedDb = db;
-  console.log('Using new instance');
-  return;
-}
-
-module.exports = connectToDatabase
-*/
-
 const mongoose = require('mongoose');
 const uri = 'mongodb+srv://root:root@backon-nm2n7.mongodb.net/test?retryWrites=true&w=majority';
 const uniqueValidator = require('mongoose-unique-validator');
@@ -80,3 +53,30 @@ var userModel = mongoose.model('User', userSchema);
 var taskModel = mongoose.model('Task', taskSchema);
 exports.User = userModel;
 exports.Task = taskModel;
+
+/*const mongoose = require('mongoose');
+
+let cachedDb = null;
+
+function connectToDatabase() {
+  if (cachedDb != null) {
+    console.log('Using cached database instance');
+    return;
+  }
+  // If no connection is cached, create a new one
+  const db = mongoose.connect('mongodb+srv://root:root@backon-nm2n7.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true})
+  .then(() => {
+    console.log('Successfully connected to BackOn MongoDB Atlas v2!');
+  })
+  .catch((error) => {
+    console.log('Unable to connect to BackOn MongoDB Atlas v2!');
+    console.error(error);
+  });
+  // Cache the database connection and return the connection
+  cachedDb = db;
+  console.log('Using new instance');
+  return;
+}
+
+module.exports = connectToDatabase
+*/
