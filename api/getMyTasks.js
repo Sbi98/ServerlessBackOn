@@ -1,4 +1,5 @@
 const mongoInterface = require('../mongoInterface');
+const ObjectId = require('mongodb').ObjectId;
 
 module.exports = (request, response) => {
   mongoInterface.Task.aggregate([
@@ -12,7 +13,7 @@ module.exports = (request, response) => {
     },
     {
       $match: {
-          helperID: request.body.helperID
+          helperID: ObjectId(request.body.helperID)
       }
     }
   ])
