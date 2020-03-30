@@ -42,8 +42,8 @@ module.exports = async (request, response) => {
   try {
     let funcRequests = getRequests(id);
     let funcTasks = getTasks(id);
-    let tasks = await funcRequests;
-    let requests = await funcTasks;
+    let requests = await funcRequests;
+    let tasks = await funcTasks;
     response.status(200).json({
       "tasks" : tasks,
       "requests" : requests
