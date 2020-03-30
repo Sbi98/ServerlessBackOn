@@ -39,16 +39,16 @@ async function getTasks(id) {
 
 module.exports = (request, response) => {
   let id = request.body._id;
-  try {
-    let [requests, tasks] = Promise.all([getRequests(id), getTasks(is)]);
+  Promise.all([getRequests(id), getTasks(is)])
+  .then(([requests, tasks]) => {
     response.status(200).json({
       "tasks" : tasks,
       "requests" : requests
-    });
-  } catch (e) {
-    console.error('error is', e);
+    })
+  })
+  .catch((error) => {
     response.status(400).json({
       "error" : error
-    });
-  };
-};
+    })
+  });
+}
