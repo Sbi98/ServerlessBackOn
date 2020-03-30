@@ -1,66 +1,60 @@
 const mongoInterface = require('../mongoInterface');
+const ObjectId = require('mongodb').ObjectId;
 
-module.exports = async (request, response) => {
-  if(request.body.neederID){
-    let requests = () => ( mongoInterface.Task.find({neederID : request.body.neederID}).exec() );
-    var myrequests;
-    let userMap = new Map();
-    try {
-      myrequests = await requests();
-      console.log("AAAAAIIII"+myrequests);
-
-      for(var taskcounter in myrequests) {
-        if (myrequests[taskcounter].helperID==null) continue;
-        let user = () => ( mongoInterface.User.findOne({_id : myrequests[taskcounter].helperID}).exec() );
-        
-        try{
-          var usr = await user();
-          userMap.set(usr._id.toString(), usr)
-        }catch(errini) { console.log("NESTED ERROR PROMISE:"+errini) }
-
+async function getRequests(id) {
+  return mongoInterface.Task.aggregate([
+    {
+      $lookup: {
+        from: "users",
+        localField: "helperID",
+        foreignField: "_id",
+        as: "user"
       }
-    }catch(e) { console.log(e) }
-
-    console.log({
-      "tasks" : myrequests,
-      "users" : Array.from(userMap.values())
-    });
-    response.status(200).json({
-      "tasks" : myrequests,
-      "users" : Array.from(userMap.values())
-    });
-  } else if(request.body.helperID){
-    let tasks = () => ( mongoInterface.Task.find({helperID : request.body.helperID}).exec() );
-    var mytasks;
-    let userMap = new Map();
-    try {
-      mytasks = await tasks();
-      console.log("AAAAAIIII"+mytasks);
-
-      for(var taskcounter in mytasks) {
-        let user = () => ( mongoInterface.User.findOne({_id : mytasks[taskcounter].neederID}).exec() );
-        
-        try{
-          var usr = await user();
-          userMap.set(usr._id.toString(), usr)
-        }catch(errini) { console.log("NESTED ERROR PROMISE:"+errini) }
-
+    },
+    {
+      $match: {
+        neederID: ObjectId(id)
       }
-    }catch(e) { console.log(e) }
+    }
+  ])
+}
 
-    console.log({
-      "tasks" : mytasks,
-      "users" : Array.from(userMap.values())
-    });
+async function getTasks(id) {
+  return mongoInterface.Task.aggregate([
+    {
+      $lookup: {
+        from: "users",
+        localField: "neederID",
+        foreignField: "_id",
+        as: "user"
+      }
+    },
+    {
+      $match: {
+        helperID: ObjectId(id)
+      }
+    }
+  ])
+} 
+
+module.exports = (request, response) => {
+  console.log('eseguo la prima');
+  let execGetReq = getRequests(request.body._id);
+  console.log('eseguo la seconda');
+  let execGetTask = getTasks(request.body._id);
+  try {
+    let requests = await execGetReq;
+    console.log('finito la prima');
+    let tasks = await execGetTask;
+    console.log('finito la seconda');
     response.status(200).json({
-      "tasks" : mytasks,
-      "users" : Array.from(userMap.values())
+      "tasks" : tasks,
+      "requests" : requests
     });
-  } else {
+  } catch(e) {
+    console.log(e);
     response.status(400).json({
-      error: "ehm"
+      "error" : error
     });
-  }
-  
+  };
 };
-
