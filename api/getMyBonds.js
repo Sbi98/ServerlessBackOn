@@ -38,21 +38,15 @@ async function getTasks(id) {
 } 
 
 module.exports = (request, response) => {
-  console.log('eseguo la prima');
-  let execGetReq = getRequests(request.body._id);
-  console.log('eseguo la seconda');
-  let execGetTask = getTasks(request.body._id);
+  let id = request.body._id;
   try {
-    let requests = await execGetReq;
-    console.log('finito la prima');
-    let tasks = await execGetTask;
-    console.log('finito la seconda');
+    let [requests, tasks] = await Promise.all([getRequests(id), getTasks(is)]);
     response.status(200).json({
       "tasks" : tasks,
       "requests" : requests
     });
-  } catch(e) {
-    console.log(e);
+  } catch (e) {
+    console.error('error is', e);
     response.status(400).json({
       "error" : error
     });
