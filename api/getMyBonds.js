@@ -39,6 +39,13 @@ async function getTasks(id) {
 
 module.exports = async (request, response) => {
   let id = request.body._id;
+  if (id == null) {
+    console.error("_id field not found in request");
+    response.status(400).json({
+      "error" : "_id field not found in request"
+    });
+    return;
+  }
   try {
     let funcRequests = getRequests(id);
     let funcTasks = getTasks(id);

@@ -8,30 +8,46 @@ module.exports = (request, response) => {
     photo: request.body.photo
   });
 
-  if (user!=null)
-    mongoInterface.User.findOne({email : user.email}).then(
+  if (user != null)
+    mongoInterface.User.findOne({email : user.email})
+    .then(
       (existentuser) => {
-        if (existentuser!=null) {
-          console.log("User alredy exists: "+existentuser)
+        if (existentuser != null) {
+          console.log(existentuser+" already exists")
           response.status(200).json({_id: existentuser._id});
-          user=null;
+          user = null;
         } else {
           console.log("Registering "+user);
           mongoInterface.User.save()
-          .then(result => {
-            console.log("Registered \n"+result);
-            response.status(200).json({
-              _id: result._id
-            });
-          })
+          .then(
+            result => {
+              console.log("Registered user: "+result);
+              response.status(200).json({
+                _id: result._id
+              });
+            }
+          )
           .catch(err => {
-            console.log(err);
+            console.error(err);
+            response.status(400).json({
+              "error": err
+            });
           });
         }
       }
-    ).catch(
+    )
+    .catch(
       (error) => {
-        console.log(error);
+        console.error(error);
+        response.status(400).json({
+          "error": err
+        });
       }
     );
+  else {
+    console.error("Error while creating User. Maybe there are missing fields in the request");
+    response.status(400).json({
+      "error": "Error while creating User. Maybe there are missing fields in the request"
+    });
+  }
 };

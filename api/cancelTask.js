@@ -1,7 +1,14 @@
 const mongoInterface = require('../mongoInterface');
 
 module.exports = (request, response) => {
-  mongoInterface.Task.findByIdAndUpdate(request.body._id, { '$set': { helperID : null } }).then(
+  let id = request.body._id;
+  if (id == null) {
+    console.error("_id field not found in request");
+    response.status(400);
+    return;
+  }
+  mongoInterface.Task.findByIdAndUpdate(id, {'$set': {helperID : null}})
+  .then(
     () => {
       response.send(200);
     }

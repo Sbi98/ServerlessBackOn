@@ -11,13 +11,14 @@ module.exports = (request, response) => {
     longitude: request.body.longitude,
     helperID: null
   });
-
-  task.save().then((result) => {
-    console.log("creation\n"+result._id);
+  task.save()
+  .then((result) => {
+    console.log("Request with id:"+result._id+" added successfully");
     response.status(200).json({
       _id: result._id
     });
-}).catch(
+  })
+  .catch(
     (error) => {
       response.status(400).json({
         error: error
