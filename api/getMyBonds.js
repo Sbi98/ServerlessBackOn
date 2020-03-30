@@ -37,18 +37,21 @@ async function getTasks(id) {
   ])
 } 
 
-module.exports = (request, response) => {
+module.exports = async (request, response) => {
   let id = request.body._id;
-  Promise.all([getRequests(id), getTasks(is)])
-  .then(([requests, tasks]) => {
+  try {
+    let funcRequests = getRequests(id);
+    let funcTasks = getTasks(id);
+    let tasks = await funcRequests;
+    let requests = await funcTasks;
     response.status(200).json({
       "tasks" : tasks,
       "requests" : requests
     })
-  })
-  .catch((error) => {
+  } catch(error) {
+    console.error(error)
     response.status(400).json({
       "error" : error
     })
-  });
+  }
 }
