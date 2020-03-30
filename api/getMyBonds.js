@@ -40,7 +40,7 @@ async function getTasks(id) {
 module.exports = (request, response) => {
   let id = request.body._id;
   try {
-    let [requests, tasks] = await Promise.all([getRequests(id), getTasks(is)]);
+    let [requests, tasks] = Promise.all([getRequests(id), getTasks(is)]);
     response.status(200).json({
       "tasks" : tasks,
       "requests" : requests
