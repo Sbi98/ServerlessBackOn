@@ -12,12 +12,14 @@ module.exports = (request, response) => {
     helperID: null
   });
   task.save()
-  .then((result) => {
-    console.log("Request with id:"+result._id+" added successfully");
-    response.status(200).json({
-      _id: result._id
-    });
-  })
+  .then(
+    (result) => {
+      console.log("Request with id:"+result._id+" added successfully");
+      response.status(200).json({
+        _id: result._id
+      });
+    }
+  )
   .catch(
     (error) => {
       response.status(400).json({

@@ -36,6 +36,30 @@ const userSchema = mongoose.Schema({
   photo: { type: String, required: true}
 });
 userSchema.plugin(uniqueValidator);
+const soulSchema = mongoose.Schema({
+  timeinvestor: { type: Double, required: true},
+  resourceful: { type: Double, required: true},
+  longrunner: { type: Double, required: true},
+  petlover: { type: Double, required: true},
+  socialbeast: { type: Double, required: true},
+  helped: { type: Number, required: true},
+  unsolved: { type: Number, required: true},
+  solved: { type: Number, required: true},
+  thumbsup: { type: Number, required: true},
+  thumbsupgiven: { type: Number, required: true},
+  thumbsdown: { type: Number, required: true},
+  thumbsdowngiven: { type: Number, required: true}
+});
+const stashedTaskSchema = mongoose.Schema({
+  title: { type: String, required: true },  
+  description: { type: String, required: false},
+  neederID: { type: ObjectId, required: true},
+  latitude: { type: Double, required: true},
+  longitude: { type: Double, required: true},
+  date: { type: Date, required: true},
+  helperID: { type: ObjectId, required: false},
+  report: { type: String, required: false}
+});
 
 var connected = false;
 
@@ -51,8 +75,12 @@ if (connected == false) {
 
 var userModel = mongoose.model('User', userSchema);
 var taskModel = mongoose.model('Task', taskSchema);
+var stashedTaskModel = mongoose.model('StashedTask', stashedTaskSchema);
+var soulModel = mongoose.model('Soul', soulSchema);
 exports.User = userModel;
 exports.Task = taskModel;
+exports.StashedTask = stashedTaskModel;
+exports.Soul = soulModel;
 
 /*const mongoose = require('mongoose');
 
