@@ -2,6 +2,10 @@ const ObjectId = require('mongodb').ObjectId;
 const mongoInterface = require('../mongoInterface');
 
 module.exports = (request, response) => {
+  let helperID = request.body.helperID;
+  if (helperID != null) {
+    helperID = ObjectId(helperID);
+  };
   const stashedtask = new mongoInterface.StashedTask({
     _id: ObjectId(request.body._id),
     title: request.body.title,  
@@ -10,7 +14,7 @@ module.exports = (request, response) => {
     date: request.body.date,
     latitude: request.body.latitude,
     longitude: request.body.longitude,
-    helperID: ObjectId(request.body.helperID),
+    helperID: helperID,
     report: request.body.report
   });
 
