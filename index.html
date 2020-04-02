@@ -3,7 +3,6 @@
 
 <head>
     <title>BackOn</title>
-    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Montserrat'>
     <link rel="icon" type="image/png" sizes="16x16" href="public/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="public/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="public/favicon-96x96.png">
@@ -11,6 +10,15 @@
     <meta name="theme-color" content="#ffffff">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        /* montserrat-regular - latin */
+        @font-face {
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Montserrat Regular'), local('Montserrat-Regular'),
+            url('public/montserrat-v14-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('public/montserrat-v14-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        }
         html {
             height: 100%;
             margin: 0;
