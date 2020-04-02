@@ -1,5 +1,5 @@
 {
   "version": 2,
   "builds": [{ "src": "**/*.js", "use": "@now/node" },{ "src": "home/home.html", "use": "@now/static" }],
-  "routes": [{ "src": "/", "dest": "@now/static" }]
+  "routes": [{ "src": "/", "dest": "/home/home.html" }]
 }
