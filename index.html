@@ -3,6 +3,7 @@
 
 <head>
     <title>BackOn</title>
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Montserrat'>
     <link rel="icon" type="image/png" sizes="16x16" href="public/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="public/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="public/favicon-96x96.png">
@@ -19,7 +20,6 @@
             font-family: 'Montserrat';
         }
         .content {
-        width: fit-content;
         color: white;
         position: absolute;
         top: 50%;
@@ -30,6 +30,11 @@
         }
         .image {
         width: 30%;
+        height: auto;
+        position: center;
+        }
+        .donateButton {
+        width: 20%;
         height: auto;
         position: center;
         }
@@ -48,9 +53,8 @@
             <input type="hidden" name="business" value="emanueletriuzzi@gmail.com" />
             <input type="hidden" name="item_name" value="BackOn permette di unire velocemente bisognosi con persone che amano donare il proprio tempo al servizio dell'altro" />
             <input type="hidden" name="currency_code" value="EUR" />
-            <input type="image" src="https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Fai una donazione con il pulsante PayPal" />
-            <img alt="" border="0" src="https://www.paypal.com/it_IT/i/scr/pixel.gif" width="1" height="1" />
-            </form>
+            <input type="image" src="public/donateButtonWhite.png" alt="donateButton" class="donateButton" title="Donate with PayPal - The safer, easier way to pay online!"/>
+        </form>
     </div>
 </body>
 
