@@ -1,4 +1,4 @@
 {
   "version": 2,
-  "builds": [{ "src": "**/*.js", "use": "@now/node" },{ "src": "index.html", "use": "@now/static" },{ "src": "public/*", "use": "@now/static" }]
+  "builds": [{ "src": "**/*.js", "use": "@now/node" },{ "src": "index.html", "use": "@now/static" },{ "src": "public/*.png", "use": "@now/static" },{ "src": "public/*.ico", "use": "@now/static" }]
 }
