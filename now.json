@@ -1,5 +1,5 @@
 {
   "version": 2,
-  "builds": [{ "src": "**/*.js", "use": "@now/node" },{ "src": "home/home.html", "use": "@now/static" }],
-  "routes": [{ "src": "/", "dest": "/home/home.html" }]
+  "builds": [{ "src": "**/*.js", "use": "@now/node" },{ "src": "**/*.html", "use": "@now/static" },{ "src": "**/*.ico", "use": "@now/static" },{ "src": "**/*.html", "use": "@now/static" }],
+  "routes": [{ "src": "/", "dest": "home/home.html" }]
 }
