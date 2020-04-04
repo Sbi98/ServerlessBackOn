@@ -1,10 +1,12 @@
 const ObjectId = require('mongodb').ObjectId;
 const mongoInterface = require('../mongoInterface');
 
+//check server date system consistency
 module.exports = (request, response) => {
   let ts = Date.now();
   let date_ob = new Date(ts);
-  let datini= new Date('2019-03-30T11:32:09.000+00:00');
+
+  var taskids=[];
   mongoInterface.Task.find({ date: { $lte: date_ob } })
   .then(
     (tasks) => {
@@ -23,7 +25,7 @@ module.exports = (request, response) => {
           report: null
         });
         stashedtasks.push(stashedtask);
-        
+        taskids.push(element["_id"]);
       });
 
       
@@ -52,7 +54,7 @@ module.exports = (request, response) => {
     }
   );
 
-  mongoInterface.Task.deleteMany({ date: { $lte: date_ob } }).then(
+  mongoInterface.Task.deleteMany({ _id: { $in: taskids } }).then(
     () => {
       
     }
