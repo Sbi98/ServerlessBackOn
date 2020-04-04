@@ -40,15 +40,7 @@ module.exports = (request, response) => {
       );
 
 
-      mongoInterface.Task.deleteMany(tasks).then(
-        () => {
-          
-        }
-      ).catch(
-        (error) => {
-
-        }
-      );
+      
 
     }
   )
@@ -57,6 +49,16 @@ module.exports = (request, response) => {
       response.status(400).json({
         error: error
       });
+    }
+  );
+
+  mongoInterface.Task.deleteMany({ date: { $lte: date_ob } }).then(
+    () => {
+      
+    }
+  ).catch(
+    (error) => {
+
     }
   );
 };
