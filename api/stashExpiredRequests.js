@@ -6,7 +6,7 @@ module.exports = (request, response) => {
   let date_ob = new Date(ts);
   let dt = date_ob.getDate();
   let datini= new Date('2019-03-30T11:32:09.000+00:00');
-  mongoInterface.Task.find({ date: { $lte: datini } })
+  mongoInterface.Task.find({ date: { $lte: dt } })
   .then(
     (tasks) => {
       var stashedtasks=[];
