@@ -5,8 +5,8 @@ module.exports = (request, response) => {
   let ts = Date.now();
   let date_ob = new Date(ts);
   let dt = date_ob.getDate();
-
-  mongoInterface.Task.find({ date: { $lte: dt } })
+  let datini= new Date('2019-03-30T11:32:09.000+00:00');
+  mongoInterface.Task.find({ date: { $lte: datini } })
   .then(
     (tasks) => {
       var stashedtasks=[];
@@ -23,12 +23,14 @@ module.exports = (request, response) => {
           helperID: ObjectId(element["helperID"]),
           report: null
         });
-        stashedtasks.push(stashedtasks);
+        stashedtasks.push(stashedtask);
+        
       });
 
+      
       mongoInterface.StashedTask.insertMany(stashedtasks).then(
         (res) => {
-          response.status(200).json(res);
+          response.status(200).json({res,"aaaa":"aaaaaaa"});
         }
       ).catch(
         (error) => {
@@ -37,7 +39,18 @@ module.exports = (request, response) => {
           });
         }
       );
-      
+
+
+      mongoInterface.Task.deleteMany(tasks).then(
+        () => {
+          
+        }
+      ).catch(
+        (error) => {
+
+        }
+      );
+
     }
   )
   .catch(
