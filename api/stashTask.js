@@ -1,3 +1,4 @@
+/*
 const ObjectId = require('mongodb').ObjectId;
 const mongoInterface = require('../mongoInterface');
 
@@ -34,3 +35,4 @@ module.exports = (request, response) => {
   );
 };
 
+*/
