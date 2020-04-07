@@ -18,18 +18,6 @@ module.exports = (request, response) => {
     report: request.body.report
   });
 
-  mongoInterface.Task.deleteOne({_id: ObjectId(request.body._id)})
-  .then(
-    () => {
-      console.log("Deleted task with id "+request.body._id);
-    }
-  )
-  .catch(
-    error => {
-      console.error(error)
-      res.send(400)
-    }
-  );
 
   stashedtask.save()
   .then(
