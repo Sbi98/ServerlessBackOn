@@ -27,7 +27,9 @@ const taskSchema = mongoose.Schema({
   latitude: { type: Double, required: true},
   longitude: { type: Double, required: true},
   date: { type: Date, required: true},
-  helperID: { type: ObjectId, required: false}
+  helperID: { type: ObjectId, required: false},
+  helperReport: { type: String, required: false},
+  neederReport: { type: String, required: false}
 });
 const userSchema = mongoose.Schema({
   name: { type: String, required: true},
@@ -61,10 +63,6 @@ const stashedTaskSchema = mongoose.Schema({
   helperReport: { type: String, required: false},
   neederReport: { type: String, required: false}
 });
-const reportSchema = mongoose.Schema({
-  helperReport: { type: String, required: false},
-  neederReport: { type: String, required: false}
-});
 
 var connected = false;
 
@@ -87,7 +85,6 @@ exports.User = userModel;
 exports.Task = taskModel;
 exports.StashedTask = stashedTaskModel;
 exports.Soul = soulModel;
-exports.Report = reportModel;
 
 /*const mongoose = require('mongoose');
 

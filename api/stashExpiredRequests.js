@@ -22,7 +22,8 @@ module.exports = (request, response) => {
           latitude: element["latitude"],
           longitude: element["longitude"],
           helperID: ObjectId(element["helperID"]),
-          report: null
+          helperReport: element["helperReport"],
+          neederReport: element["neederReport"]
         });
         stashedtasks.push(stashedtask);
         taskids.push(element["_id"]);
