@@ -18,7 +18,7 @@ module.exports = (request, response) => {
     report: request.body.report
   });
 
-  Task.deleteOne({_id: ObjectId(request.body._id)})
+  mongoInterface.Task.deleteOne({_id: ObjectId(request.body._id)})
   .then(
     () => {
       console.log("Deleted task with id "+request.body._id);
