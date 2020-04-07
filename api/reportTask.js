@@ -10,6 +10,7 @@ module.exports = (request, response) => {
     response.status(400).json({
       "error" : "_id or helperID field not found in request"
     });
+    console.error("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
     return;
   }
   if(toReport == "helper") {
