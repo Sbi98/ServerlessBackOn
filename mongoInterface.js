@@ -58,11 +58,11 @@ const stashedTaskSchema = mongoose.Schema({
   longitude: { type: Double, required: true},
   date: { type: Date, required: true},
   helperID: { type: ObjectId, required: false},
-  helperReport: { type: String, required: false}
+  helperReport: { type: String, required: false},
   neederReport: { type: String, required: false}
 });
 const reportSchema = mongoose.Schema({
-  helperReport: { type: String, required: false}
+  helperReport: { type: String, required: false},
   neederReport: { type: String, required: false}
 });
 
