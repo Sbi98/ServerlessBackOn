@@ -14,7 +14,7 @@ module.exports = (request, response) => {
     return;
   }
   if(toReport == "helper") {
-    mongoInterface.Task.findByIdAndUpdate(id, { '$set': { helperReport : toReport} }).then(
+    mongoInterface.Task.findByIdAndUpdate(id, { '$set': { helperReport : report} }).then(
         () => {
           response.send(200);
         }
@@ -25,7 +25,7 @@ module.exports = (request, response) => {
       );
   }
   else {
-    mongoInterface.Task.findByIdAndUpdate(id, { '$set': { neederReport : toReport} }).then(
+    mongoInterface.Task.findByIdAndUpdate(id, { '$set': { neederReport : report} }).then(
         () => {
           response.send(200);
         }
