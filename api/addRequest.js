@@ -9,7 +9,9 @@ module.exports = (request, response) => {
     date: request.body.date,
     latitude: request.body.latitude,
     longitude: request.body.longitude,
-    helperID: null
+    helperID: null,
+    helperReport: null,
+    neederReport: null
   });
   task.save()
   .then(

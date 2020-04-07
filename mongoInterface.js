@@ -80,7 +80,6 @@ var userModel = mongoose.model('User', userSchema);
 var taskModel = mongoose.model('Task', taskSchema);
 var stashedTaskModel = mongoose.model('StashedTask', stashedTaskSchema);
 var soulModel = mongoose.model('Soul', soulSchema);
-var reportModel = mongoose.model('Report', reportSchema);
 exports.User = userModel;
 exports.Task = taskModel;
 exports.StashedTask = stashedTaskModel;
