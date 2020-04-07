@@ -60,6 +60,10 @@ const stashedTaskSchema = mongoose.Schema({
   helperID: { type: ObjectId, required: false},
   report: { type: String, required: false}
 });
+const reportSchema = mongoose.Schema({
+  helperReport: { type: String, required: false}
+  neederReport: { type: String, required: false}
+});
 
 var connected = false;
 
@@ -77,10 +81,12 @@ var userModel = mongoose.model('User', userSchema);
 var taskModel = mongoose.model('Task', taskSchema);
 var stashedTaskModel = mongoose.model('StashedTask', stashedTaskSchema);
 var soulModel = mongoose.model('Soul', soulSchema);
+var reportModel = mongoose.model('Report', reportSchema);
 exports.User = userModel;
 exports.Task = taskModel;
 exports.StashedTask = stashedTaskModel;
 exports.Soul = soulModel;
+exports.Report = reportModel;
 
 /*const mongoose = require('mongoose');
 
