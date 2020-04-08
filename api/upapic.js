@@ -46,14 +46,19 @@ function uploadFile(auth) {
     if (err) {
       // Handle error
       console.error(err);
+      response.status(400).json({
+        "error" : "sei gai"
+      });
     } else {
       console.log('File Id: ', file.id);
+      response.status(200).json({
+        "controlla" : "sei gai"
+      });
     }
   });
 }
 
 module.exports = (request, response) => {
-  if (err) return console.log('Error loading client secret file:', err);
   // Authorize a client with credentials, then call the Google Drive API.
   authorize(JSON.parse(content), uploadFile);
 };
