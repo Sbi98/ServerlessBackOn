@@ -2,6 +2,7 @@
 const fs = require('fs');
 const { google } = require('googleapis');
 const process = require('process');
+const dirtree = require('directory-tree');
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/drive']
@@ -53,7 +54,12 @@ module.exports = (request, response) => {
   const client_secret = credentials.client_secret
   const client_id = credentials.client_id
   const redirect_uris = credentials.redirect_uris
-  console.log(process.cwd())
+
+  const dir = process.cwd() 
+  console.log(dir)
+  console.log(dirTree(dir))
+  console.log(dirTree('../'))
+  console.log(dirTree('../../'))
 
   const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
 
