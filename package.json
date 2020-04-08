@@ -13,7 +13,9 @@
     "mongoose": "^5.8.12",
     "mongoose-unique-validator": "^2.0.3",
     "now": "^17.1.1",
-    "googleapis" : "^39"
+    "googleapis" : "^39",
+    "fs" : "^0.0.1-security"
+    
   },
   "description": ""
 }

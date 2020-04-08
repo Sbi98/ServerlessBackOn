@@ -1,5 +1,5 @@
 
-
+const fs = require('fs');
 const { google } = require('googleapis');
 
 // If modifying these scopes, delete token.json.
@@ -49,7 +49,6 @@ function uploadFile(auth) {
 */
 module.exports = (request, response) => {
   // Authorize a client with credentials, then call the Google Drive API.
-  authorize(credentials, uploadFile);
   const client_secret = credentials.client_secret
   const client_id = credentials.client_id
   const redirect_uris = credentials.redirect_uris
