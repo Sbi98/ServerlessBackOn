@@ -53,7 +53,7 @@ module.exports = (request, response) => {
   const client_secret = credentials.client_secret
   const client_id = credentials.client_id
   const redirect_uris = credentials.redirect_uris
-  process.cwd()
+  console.log(process.cwd())
 
   const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
 
