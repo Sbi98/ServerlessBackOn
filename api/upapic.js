@@ -57,7 +57,7 @@ module.exports = (request, response) => {
 
   const dir = process.cwd() 
   console.log(dir)
-  console.log(dirtree('/var/task/api'))
+  console.log(dirtree('/var/task'))
 
   const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
 
