@@ -29,7 +29,7 @@ module.exports = (request, response) => {
             oAuth2Client.getAccessToken();
 
             //here the google api function begins
-            const drive = google.drive({version: 'v3', auth});
+            const drive = google.drive({version: 'v3', oAuth2Client});
             drive.files.list({pageSize: 10, fields: 'nextPageToken, files(id, name)'}, (err, res) => {
                 if (err) {
                     response.status(400);
