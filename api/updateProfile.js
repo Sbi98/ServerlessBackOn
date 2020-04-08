@@ -11,7 +11,7 @@ module.exports = (request, response) => {
     return;
   }
   if(request.body.newName){
-    mongoInterface.User.findByIdAndUpdate(id, { '$set': { name : request.body.newName} }).then(
+    mongoInterface.User.findByIdAndUpdate(id, { '$set': { name : String(request.body.newName)} }).then(
         () => {
         response.send(200);
         }
@@ -22,7 +22,7 @@ module.exports = (request, response) => {
     );
   }
   if(request.body.newSurname){
-    mongoInterface.User.findByIdAndUpdate(id, { '$set': { name : request.body.newSurname} }).then(
+    mongoInterface.User.findByIdAndUpdate(id, { '$set': { surname : String(request.body.newSurname)} }).then(
         () => {
         response.send(200);
         }
