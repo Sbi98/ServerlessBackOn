@@ -10,9 +10,9 @@ module.exports = (request, response) => {
     });
     return;
   }
-  let helperReport = request.body.helperReport //null se il report è riferito al needer
-  if(helperReport) {
-    mongoInterface.Task.findByIdAndUpdate(id, { '$set': { helperReport : helperReport} }).then(
+  let helperRep = request.body.helperReport //null se il report è riferito al needer
+  if(helperRep) {
+    mongoInterface.Task.findByIdAndUpdate(id, { '$set': { helperReport : helperRep} }).then(
         () => {
           response.send(200);
         }
