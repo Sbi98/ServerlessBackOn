@@ -61,7 +61,7 @@ module.exports = (request, response) => {
   };
   const media = {
     mimeType: 'image/jpeg',
-    body: fs.createReadStream('public/backonicon.png')
+    body: fs.createReadStream('../public/backonicon.png')
   };
   drive.files.create({
     resource: fileMetadata,
