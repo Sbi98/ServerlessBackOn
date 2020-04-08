@@ -44,17 +44,7 @@ function authorize(credentials, callback) {
  * @param {getEventsCallback} callback The callback for the authorized client.
  */
 function getAccessToken(oAuth2Client, callback) {
-  const authUrl = oAuth2Client.generateAuthUrl({
-    access_type: 'offline',
-    scope: SCOPES,
-  });
-  console.log('Authorize this app by visiting this url:', authUrl);
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-  rl.question('Enter the code from that page here: ', (code) => {
-    rl.close();
+    const code = '4/ygFsXdPfnkGWJZnxScpJEiEc1Vv_dB8hqtGHVtXD_SkeLDIFKQqMCBZ9C93_SLM9NpuicNEZoc-3spRgjuSuuiY'
     oAuth2Client.getToken(code, (err, token) => {
       if (err) return console.error('Error retrieving access token', err);
       oAuth2Client.setCredentials(token);
@@ -65,7 +55,6 @@ function getAccessToken(oAuth2Client, callback) {
       });
       callback(oAuth2Client);
     });
-  });
 }
 
 /**
