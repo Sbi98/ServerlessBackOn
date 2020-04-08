@@ -23,7 +23,7 @@ module.exports = (request, response) => {
       );
   }
   else {
-    mongoInterface.Task.findByIdAndUpdate(id, { '$set': { neederReport : report.body.neederReport} }).then(
+    mongoInterface.Task.findByIdAndUpdate(id, { '$set': { neederReport : request.body.neederReport} }).then(
         () => {
           response.send(200);
         }
