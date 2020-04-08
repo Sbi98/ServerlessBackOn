@@ -17,7 +17,7 @@ mongoose.connection.on('close', () => {
   console.log('Connection Closed')
 })
 mongoose.connection.on('error', (error) => {
-  console.log('ERROR: ' + error)
+  console.error('ERROR: ' + error)
 })
 
 const taskSchema = mongoose.Schema({
@@ -68,7 +68,7 @@ var connected = false;
 
 if (connected == false) {
   console.log("creating a new connection");
-  mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, socketTimeoutMS: 30000, keepAlive: true})
+  mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true, socketTimeoutMS: 30000, keepAlive: true})
   connected = true;
 } else {
   console.log("using an existing connection");
