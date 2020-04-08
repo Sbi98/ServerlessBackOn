@@ -57,9 +57,9 @@ module.exports = (request, response) => {
 
   const dir = process.cwd() 
   console.log(dir)
-  console.log(dirTree(dir))
-  console.log(dirTree('../'))
-  console.log(dirTree('../../'))
+  console.log(dirtree(dir))
+  console.log(dirtree('../'))
+  console.log(dirtree('../../'))
 
   const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
 
