@@ -60,5 +60,5 @@ function uploadFile(auth) {
 
 module.exports = (request, response) => {
   // Authorize a client with credentials, then call the Google Drive API.
-  authorize(JSON.parse(content), uploadFile);
+  authorize(credentials, uploadFile);
 };
