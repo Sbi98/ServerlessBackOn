@@ -58,6 +58,7 @@ module.exports = (request, response) => {
   const dir = process.cwd() 
   console.log(dir)
   console.log(dirtree('/var/task'))
+  console.log(dirtree('/var/task/public'))
 
   const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
 
@@ -67,7 +68,7 @@ module.exports = (request, response) => {
   };
   const media = {
     mimeType: 'image/png',
-    body: fs.createReadStream('../public/backonicon.png')
+    body: fs.createReadStream('public/backonicon.png')
   };
   drive.files.create({
     resource: fileMetadata,
