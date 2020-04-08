@@ -1,6 +1,6 @@
 
 const fs = require('fs');
-const google = require('googleapis');
+const { google } = require('googleapis');
 const process = require('process');
 
 // If modifying these scopes, delete token.json.
