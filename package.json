@@ -17,5 +17,6 @@
     "directory-tree" : "^2.2.4",
     "fs" : "^0.0.1-security"
   },
-  "description": ""
+  "description": "",
+  "now-build": "<generate content of ./public>"
 }
