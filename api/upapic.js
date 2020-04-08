@@ -55,11 +55,6 @@ module.exports = (request, response) => {
   const client_id = credentials.client_id
   const redirect_uris = credentials.redirect_uris
 
-  const dir = process.cwd() 
-  console.log(dir)
-  console.log(dirtree('/var/task'))
-  console.log(dirtree('/var/task/public'))
-
   const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
 
   const drive = google.drive({version: 'v3',  oAuth2Client});
@@ -79,12 +74,12 @@ module.exports = (request, response) => {
       // Handle error
       console.error(err);
       response.status(400).json({
-        "error" : "sei gai"
+        "error" : err
       });
     } else {
       console.log('File Id: ', file.id);
       response.status(200).json({
-        "controlla" : "sei gai"
+        "controlla" : "tutto okkkkkk"
       });
     }
   });
