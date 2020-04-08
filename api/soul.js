@@ -51,35 +51,3 @@ exports.birth = (req, res, next) => {
     _id: null
   });
 };
-/*
-exports.getUserByID = (req, res, next) => {
-  var ObjectId = require('mongodb').ObjectID;
-  User.findOne({_id: ObjectId(req.param("_id"))}).then(
-    (user) => {
-      res.status(200).json(user);
-    }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
-    }
-  );
-};
-
-
-exports.getUserByIDGET = (req, res, next) => {
-  User.findOne({
-    _id: req.params.id
-  }).then(
-    (user) => {
-      res.status(200).json(user);
-    }
-  ).catch(
-    (error) => {
-      res.status(404).json({
-        error: error
-      });
-    }
-  );
-};*/
