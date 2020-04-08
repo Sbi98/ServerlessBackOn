@@ -55,6 +55,10 @@ module.exports = (request, response) => {
   const client_id = credentials.client_id
   const redirect_uris = credentials.redirect_uris
 
+  const dir = process.cwd() 
+  console.log(dir)
+  console.log(dirtree('/var/task'))
+
   const oAuth2Client = new google.auth.OAuth2(client_id, client_secret, redirect_uris[0]);
 
   const drive = google.drive({version: 'v3',  oAuth2Client});
