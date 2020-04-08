@@ -11,7 +11,7 @@ const credentials = {"web":{"client_id":"571455866380-nenuk3sh8ent5kvu14dq49e9hh
 
 /**
 * Describe with given media and metaData and upload it using google.drive.create method()
-*/ 
+ 
 function uploadFile(auth) {
   const drive = google.drive({version: 'v3', auth});
   const fileMetadata = {
@@ -40,7 +40,7 @@ function uploadFile(auth) {
     }
   });
 }
-
+*/
 module.exports = (request, response) => {
   // Authorize a client with credentials, then call the Google Drive API.
   authorize(credentials, uploadFile);
