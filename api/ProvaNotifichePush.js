@@ -7,6 +7,7 @@ let provider = new apn.Provider({
 let notification = new apn.Notification();
 notification.alert = "Hello, this is a test!";
 notification.badge = 1337;
+notification.production = false;
 
 let token = "<7662f3ca693228b1a37cea14e7023a9573ecbd4dce48d0d7b6f0ba31d9e20dea>";
 
