@@ -1,4 +1,5 @@
 const mongoInterface = require('../mongoInterface');
+const ObjectId = require('mongodb').ObjectId;
 
 module.exports = (request, response) => {
   var user = new mongoInterface.User({
@@ -14,10 +15,11 @@ module.exports = (request, response) => {
     .then(
       (existentuser) => {
         if (existentuser != null) {
-          console.log(existentuser+" already exists")
+          console.log(existentuser+" already exists");
           var gdevices = existentuser.devices;
-          gdevices.set( request.body.deviceToken , Date.now() )
+          gdevices.set( request.body.deviceToken , Date.now() );
           mongoInterface.User.updateOne({_id : ObjectId(existentuser._id)}, {$set: {'devices' : gdevices}});
+
           response.status(200).json({_id: existentuser._id});
           
           user = null;
