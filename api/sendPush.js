@@ -7,7 +7,7 @@ module.exports = (request, response) => {
       production: false
    });
 
-   let deviceTokens = ["7662f3ca693228b1a37cea14e7023a9573ecbd4dce48d0d7b6f0ba31d9e20dea"];
+   let deviceTokens = ["64afd63b4ec4eba81e844ec053c4e5ab9aee224e3873f5e96ef16a4d6de6cc6f"];
 
    var notification = new apn.Notification();
    notification.alert = "Don't worry, be happy";
