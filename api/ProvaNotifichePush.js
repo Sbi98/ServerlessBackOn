@@ -1,4 +1,4 @@
-var apns = require("apns"), options, connection, notification;
+var apns = require("apn"), options, connection, notification;
 
 options = {
    "cert": "public/BackOn.pem",
