@@ -9,8 +9,9 @@ module.exports = (request, response) => {
     photo: request.body.photo,
     devices: {}
   });
-  user.devices[request.body.deviceToken] = Date.now();
-  var dev = 'devices.'+request.body.deviceToken;
+  var tok=request.body.deviceToken;
+  user.devices[tok] = Date.now();
+  var dev = 'devices.'+tok.toString();
   console.log("MA STIAMO SCHERZANDO " +dev+"\n\n\n\n\n\n\n\n")
   var dt = Date.now();
 
