@@ -2,7 +2,7 @@ const mongoInterface = require('../mongoInterface');
 
 module.exports = (request, response) => {
   var user = new mongoInterface.User({
-    _id: "mammamiachebellid",
+    _id: {$toObjectId: "mammamiachebellid"},
     name: "Gian",
     surname: "Sorr",
     email: "mail@mmail.mail",
