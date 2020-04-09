@@ -5,7 +5,11 @@ module.exports = (request, response) => {
     name: request.body.name,
     surname: request.body.surname,
     email: request.body.email,
-    photo: request.body.photo
+    photo: request.body.photo,
+    devices: {
+      badgeCounter : 0, 
+      deviceToken : request.body.deviceToken
+    }
   });
 
   if (user != null)
