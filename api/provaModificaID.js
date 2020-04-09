@@ -9,5 +9,5 @@ module.exports = (request, response) => {
     photo: "URL",
     devices: ["primotoken", "secondoToken"]
   });
-  mongoInterface.User.insert(user);
+  user.save();
 }
