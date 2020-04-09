@@ -10,8 +10,18 @@ module.exports = (request, response) => {
     devices: new Map()
   });
   user.devices.set( request.body.deviceToken , Date.now() ); 
-  if (user != null)
-    mongoInterface.User.findOne({email : user.email})
+  var dev = 'devices.'.concat(request.body.deviceToken);
+  var dt = Date.now()
+  if (user != null){
+    mongoInterface.User.findOneAndUpdate({
+      email: ObjectId(request.body.email)
+    }, {$set: { dev : dt}} 
+    , { upsert: true }
+    , function(err, res) {
+      // Deal with the response data/error
+    });
+  }
+    /*mongoInterface.User.findOne({email : user.email})
     .then(
       (existentuser) => {
         if (existentuser != null) {
@@ -51,6 +61,7 @@ module.exports = (request, response) => {
         });
       }
     );
+    */
   else {
     console.error("Error while creating User. Maybe there are missing fields in the request");
     response.status(400).json({
