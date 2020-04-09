@@ -12,7 +12,8 @@ module.exports = (request, response) => {
   var tok=request.body.deviceToken;
   user.devices[tok] = Date.now();
   var dev = 'devices.'+tok.toString();
-  console.log("MA STIAMO SCHERZANDO " +dev+"\n\n\n\n\n\n\n\n")
+  console.log(tok);
+  console.log("assaassaMA STIAMO SCHERZANDO " +dev+"\n\n\n\n\n\n\n\n")
   var dt = Date.now();
 
   if (user != null)
