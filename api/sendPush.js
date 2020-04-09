@@ -11,7 +11,7 @@ module.exports = (request, response) => {
 
    var notification = new apn.Notification();
    notification.alert = "Don't worry, be happy";
-   notification.badge = 1;
+   //notification.badge = 1;
    notification.topic = "it.unisa.applefoundationprogram.BackOn";
 
    provider.send(notification, deviceTokens).then( (res) => {
