@@ -4,6 +4,7 @@ options = {
    "cert": "public/BackOn.pem",
   "key": "public/BackOn.pem",
    debug : true
+   production: false,
 };
 
 connection = new apns.Connection(options);
