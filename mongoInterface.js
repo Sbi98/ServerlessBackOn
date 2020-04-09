@@ -35,7 +35,7 @@ const userSchema = mongoose.Schema({
   name: { type: String, required: true},
   surname: { type: String, required: true},
   email: { type: String, required: true, unique: true },
-  photo: { type: String, required: true}
+  photo: { type: String, required: true},
   devices: {
     type: Map, // `devices` is a key/value store for string keys
     of: Date // Values must be dates
