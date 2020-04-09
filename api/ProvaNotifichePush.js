@@ -1,16 +1,15 @@
-const apn = require("apn");
+var apns = require("apns"), options, connection, notification;
 
-let provider = new apn.Provider({
-  "cert": "public/BackOn.pem",
+options = {
+   "cert": "public/BackOn.pem",
   "key": "public/BackOn.pem",
-});
-let notification = new apn.Notification();
-notification.alert = "Hello, this is a test!";
-notification.badge = 1337;
-notification.production = false;
+   debug : true
+};
 
-let token = "<7662f3ca693228b1a37cea14e7023a9573ecbd4dce48d0d7b6f0ba31d9e20dea>";
+connection = new apns.Connection(options);
 
-provider.send(notification, token).then( (response) => {
-  console.log("done");
-});
+notification = new apns.Notification();
+notification.device = new apns.Device("7662f3ca693228b1a37cea14e7023a9573ecbd4dce48d0d7b6f0ba31d9e20dea");
+notification.alert = "Hello World !";
+
+connection.sendNotification(notification);
