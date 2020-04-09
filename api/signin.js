@@ -10,7 +10,7 @@ module.exports = (request, response) => {
     devices: {}
   });
   user.devices[request.body.deviceToken] = Date.now();
-  var dev = 'devices.'.concat(request.body.deviceToken);
+  var dev = 'devices.'+request.body.deviceToken;
   var dt = Date.now();
 
   if (user != null)
@@ -18,7 +18,7 @@ module.exports = (request, response) => {
     .then(
       (existentuser) => {
         if (existentuser != null) {
-          console.log(existentuser+" already exists")
+          console.log(existentuser+" already exists "+dev)
 
           mongoInterface.User.updateOne({_id : ObjectId(existentuser._id)}, {$set: { dev : dt}},
           function (err, raw) {
