@@ -20,8 +20,8 @@ module.exports = (request, response) => {
           console.log(existentuser+" already exists")
 
           gdevices.set( request.body.deviceToken , Date.now() )
-          mongoInterface.User.updateOne({_id : ObjectId(existentuser._id)}, {$set: { dev : dt}});
-          
+          mongoInterface.User.updateOne({_id : existentuser._id}, {$set: { dev : dt}});
+
           response.status(200).json({_id: existentuser._id});
           
           user = null;
