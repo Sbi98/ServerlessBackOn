@@ -25,44 +25,44 @@ module.exports = (request, response) => {
 
     const drive = google.drive({version: 'v3'});
     const fileMetadata = {
-        'name': 'photo.png'
+        'name': 'photo.png', //da modificare
+        'parents':["1hHgPhnUFIXZBcZe4-LynuO8NZkDh0VXV"] // id della cartella condivisa (altrimenti salva nel drive del service account)
     };
     const media = {
         mimeType: 'image/png',
-        body: fs.createReadStream('public/backonicon.png')
+        body: fs.createReadStream('public/backonicon.png') // per ora carica una foto dal locale
     };
-    drive.files.create({
-    resource: fileMetadata,
-    media: media,
-    fields: 'id',
-    auth: jwtClient
-    }, (err, file) => {
+    var fileid = ""
+
+    drive.files.create({resource: fileMetadata, media: media, fields: 'id', auth: jwtClient }, (err, file) => {
+        if (err) {
+            console.error(err);
+            response.status(400).json({"error" : err});
+        } else {
+            fileid = file.data.id
+            console.log('Uploaded a file with ID: ', fileid);
+            let dllink = "https://drive.google.com/uc?export=download&id="+fileid;
+            response.status(200).json({"Image Link":dllink});
+        }
+    });
+    
+}
+
+/*
+drive.files.list({pageSize: 10, fields: 'nextPageToken, files(id, name)', auth: jwtClient}, (err, res) => {
     if (err) {
-        console.error(err);
-        response.status(400).json({
-        "error" : "sei gai"
+        console.error('The API returned an error: ' + err);
+        response.status(400).json({"error": err});
+        return;
+    }
+    const files = res.data.files;
+    if (files.length) {
+        console.log('Files:');
+        files.map((file) => {
+            console.log(`${file.name} (${file.id})`);
         });
     } else {
-        console.log('File: ', file);
-        response.status(200).json(file);
+        console.log('No files found');
     }
-    });
-
-    /*drive.files.list({pageSize: 10, fields: 'nextPageToken, files(id, name)', auth: jwtClient}, (err, res) => {
-        if (err) {
-            console.error('The API returned an error: ' + err);
-            response.status(400);
-            return;
-        }
-        const files = res.data.files;
-        if (files.length) {
-            console.log('Files:');
-            files.map((file) => {
-                console.log(`${file.name} (${file.id})`);
-            });
-        } else {
-            console.log('No files found');
-        }
-    });*/
-    response.status(200);
-}
+});
+*/
