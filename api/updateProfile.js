@@ -1,5 +1,4 @@
 const mongoInterface = require('../mongoInterface');
-const ObjectId = require('mongodb').ObjectId;
 
 module.exports = (request, response) => {
   let id = request.body._id;
