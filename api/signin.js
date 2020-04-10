@@ -10,7 +10,7 @@ module.exports = (request, response) => {
     devices: {}
   });
   console.log("SSUICIDIO")
-  console.log(request)
+  console.log(request.body)
   var tok=request.body.deviceToken;
   var tikki=request.
   user.devices[tok] = Date.now();
