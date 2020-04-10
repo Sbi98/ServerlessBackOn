@@ -9,10 +9,8 @@ module.exports = (request, response) => {
     photo: request.body.photo,
     devices: {}
   });
-  console.log("SSUICIDIO")
-  console.log(request.body)
-  var tok=request.body.deviceToken;
-  var tikki=request.
+  console.log("SSUICIDIO");
+  var tok=request.body("deviceToken")
   user.devices[tok] = Date.now();
   var dev = 'devices.'+tok.toString();
   console.log("OIOPPOpOP")
