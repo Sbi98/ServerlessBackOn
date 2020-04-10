@@ -7,7 +7,7 @@ module.exports = (request, response) => {
     surname: "Sorr",
     email: "mail@mmail.mail",
     photo: "URL",
-    devices: []
+    devices: ["Porcodio"]
   });
   user.save();
 }
