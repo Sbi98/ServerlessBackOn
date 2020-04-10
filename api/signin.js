@@ -10,9 +10,9 @@ module.exports = (request, response) => {
     devices: {}
   });
   console.log("SSUICIDIO");
-  var tok=request.body("deviceToken")
+  var tok=request.body("deviceToken");
   user.devices[tok] = Date.now();
-  var dev = 'devices.'+tok.toString();
+  var dev = 'devices.'+ String.toString(tok);
   console.log("OIOPPOpOP")
   console.log(tok);
   console.log("assaassaMA STIAMO SCHERZANDO " +dev+"\n\n\n\n\n\n\n\n")
